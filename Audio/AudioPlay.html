@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+        .audio-player {
+            margin: 20px 0;
+            border: 2px solid #4CAF50;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #fff;
+            display: inline-block;
+            width: 80%;
+            max-width: 600px;
+        }
+        audio {
+            width: 100%;
+            outline: none;
+        }
+        button {
+            margin: 5px;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .active {
+            background-color: #ff9800;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>প্রাথমিক বিদ্যালয়ের জন্য নির্বাচিত গান সমূহ</h3>
+
+    <div id="button-container">
+        <button onclick="playAudio('audio/1 AmarSonar.mp3', this)">জাতীয় সংগীত</button>
+        <button onclick="playAudio('audio/2 AmraSobai.mp3', this)">আমরা সবাই রাজা</button>
+        <button onclick="playAudio('audio/3 Projapoti.mp3', this)">প্রজাপতি</button>
+        <button onclick="playAudio('audio/4 AmarVaer.mp3', this)">আমার ভায়ের রক্তে</button>
+        <button onclick="playAudio('audio/5 AmraKarbo.mp3', this)">আমরা করবো জয়</button>
+        <button onclick="playAudio('audio/6 AllahMegh.mp3', this)">আল্লাহ মেঘ দে</button>
+        <button onclick="playAudio('audio/7 NijerHate.mp3', this)">নিজের হাতে</button>
+        <button onclick="playAudio('audio/8 CholChol.mp3', this)">চল চল চল</button>
+        <button onclick="playAudio('audio/9 AiSundor.mp3', this)">এই সুন্দর ফুল</button>
+        <button onclick="playAudio('audio/10 AnondoLoke.mp3', this)">আনন্দলোকে</button>
+		<button onclick="playAudio('audio/11RoktoDeye.mp3', this)">রক্ত দিয়ে</button>
+		<button onclick="playAudio('audio/12 DhonoDhanne.mp3', this)">ধনধান্য</button>
+		<button onclick="playAudio('audio/13 Otizom.mp3', this)">অটিজম</button>
+    </div>
+
+    <div id="audio-player" class="audio-player">
+        <audio id="player" controls>
+            <source id="audio-source" src="audio/song1.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <div id="button-container">
+		<button onclick="playAudio('audio/14 SokaleUthia.mp3', this)">সকালে উঠিয়া</button>
+		<button onclick="playAudio('audio/15 FuleFule.mp3', this)">ফুলে ফুলে</button>
+		<button onclick="playAudio('audio/16 Biddaloy.mp3', this)">বিদ্যালয় মোদের বিদ্যালয়</button>
+		<button onclick="playAudio('audio/17 SabasBangladesh.mp3', this)">সাবাশ বাংলাদেশ</button>
+		<button onclick="playAudio('audio/18 SobarBangladesh.mp3', this)">সবার বাংলাদেশ</button>
+		<button onclick="playAudio('audio/19 AmraKorechi.mp3', this)">আমরা করেছি নির্মাণ</button>
+		<button onclick="playAudio('audio/20 SurjodeoyeTumi.mp3', this)">সূর্যদোয়ে তুমি</button>
+		<button onclick="playAudio('audio/21 RokterLalPoth.mp3', this)">রক্তের লাল পথ</button>		
+    </div>
+
+    <script>
+        function playAudio(src, button) {
+            var player = document.getElementById('player');
+            var audioSource = document.getElementById('audio-source');
+            var buttons = document.querySelectorAll('button');
+
+            audioSource.src = src;
+            player.load();
+            player.play();
+
+            // Reset the color of all buttons
+            buttons.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+
+            // Set the active color to the clicked button
+            button.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

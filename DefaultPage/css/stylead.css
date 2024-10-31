@@ -1,0 +1,12 @@
+        @font-face {
+            font-family: 'SutonnyOMJ';
+            src: url('SutonnyOMJ.ttf') format('truetype');
+        }
+        .date {
+            font-size: 40px; /* Make the font size larger */
+            color: black; /* Set text color */
+            text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; /* Add white outline */
+            font-family: 'SutonnyOMJ'; /* Apply SutonnyOMJ font */
+            display: flex; /* Align items horizontally */
+            gap: 20px; /* Space between Hijri and Gregorian dates */
+        }

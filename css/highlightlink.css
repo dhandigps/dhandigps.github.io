@@ -1,0 +1,19 @@
+            /* Define the CSS class for the hover effect */
+            .highlight-on-hover {
+              color: black;
+              text-decoration: none;
+              display: inline-block;
+              padding: 2px;
+              border: 1px solid transparent;
+              border-radius: 8px;
+              /* Rounded corners */
+              transition: background-color 0.3s ease;
+              /* Smooth transition for background color */
+            }
+
+            .highlight-on-hover:hover {
+              color: blue;
+              background-color: #F5F5B3;
+              /* Light yellow background color on hover */
+              border: 1px solid blue;
+            }

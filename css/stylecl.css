@@ -1,0 +1,13 @@
+/* styles.css */
+
+.rborder {
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: 2px solid #036;
+}
+
+.custom-link {
+  font-size: 18px;
+  font-weight: normal;
+}
