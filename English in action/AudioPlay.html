@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+        .audio-player {
+            margin: 20px 0;
+            border: 2px solid #4CAF50;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #fff;
+            display: inline-block;
+            width: 80%;
+            max-width: 600px;
+        }
+        audio {
+            width: 100%;
+            outline: none;
+        }
+        button {
+            margin: 5px;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .active {
+            background-color: #ff9800;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>English In Action Audio</h3>
+
+    <div id="button-container">
+	    <button onclick="playAudio('audio/Top/1 Good Morning Song.mp3', this)">Good Morning Song</button>
+        <button onclick="playAudio('audio/Top/2 Goodmorning Students.mp3', this)">Goodmorning Students</button>
+        <button onclick="playAudio('audio/Top/3 Goodmorning Teacher.mp3', this)">Goodmorning Teacher</button>
+        <button onclick="playAudio('audio/Top/4 Goodbye song.mp3', this)">Goodbye song</button>
+        <button onclick="playAudio('audio/Top/5 Hello Song.mp3', this)">Hello Song</button>
+        <button onclick="playAudio('audio/Top/6 A small lamp.mp3', this)">A small lamp</button>
+        <button onclick="playAudio('audio/Top/7 Action 1 Song.mp3', this)">Action 1 Song</button>
+        <button onclick="playAudio('audio/Top/8 Action 2 Song.mp3', this)">Action 2 Song</button>
+        <button onclick="playAudio('audio/Top/9 Action 3 Song.mp3', this)">Action 3 Song</button>
+        <button onclick="playAudio('audio/Top/10 Animal 1 Song.mp3', this)">Animal 1 Song</button>
+		<button onclick="playAudio('audio/Top/11 Animal 2 Song.mp3', this)">Animal 2 Song</button>
+		<button onclick="playAudio('audio/Top/12 Cap song.mp3', this)">Cap song</button>
+		<button onclick="playAudio('audio/Top/13 Cat Song 1.mp3', this)">Cat Song 1</button>
+		<button onclick="playAudio('audio/Top/14 Cat song 2.mp3', this)">Cat song 2</button>
+		<button onclick="playAudio('audio/Top/15 Cloud song.mp3', this)">Cloud song</button>
+		<button onclick="playAudio('audio/Top/16 Country song_Nepal.mp3', this)">Country song_Nepal</button>
+		<button onclick="playAudio('audio/Top/17 Cuckoo song.mp3', this)">Cuckoo song</button>
+		<button onclick="playAudio('audio/Top/18 Daily routine song.mp3', this)">Daily routine song</button>
+		<button onclick="playAudio('audio/Top/19 Eid Day song.mp3', this)">Eid Day song</button>
+		<button onclick="playAudio('audio/Top/20 Fish song.mp3', this)">Fish song</button>
+		<button onclick="playAudio('audio/Top/21 Food Song.mp3', this)">Food Song</button>
+		<button onclick="playAudio('audio/Top/22 Friend Song.mp3', this)">Friend Song</button>
+		<button onclick="playAudio('audio/Top/23 Hello Friend.mp3', this)">Hello Friend</button>
+		<button onclick="playAudio('audio/Top/24 Hello I am Mina.mp3', this)">Hello I am Mina</button>
+		<button onclick="playAudio('audio/Top/25 Hello Runa 2.mp3', this)">Hello Runa 2</button>
+		<button onclick="playAudio('audio/Top/26 Hello Sazia.mp3', this)">Hello Sazia</button>
+		<button onclick="playAudio('audio/Top/27 Home song.mp3', this)">Home song</button>
+		<button onclick="playAudio('audio/Top/28 Humpty Dumpty.mp3', this)">Humpty Dumpty</button>
+		<button onclick="playAudio('audio/Top/29 I have a dog.mp3', this)">I have a dog</button>
+		<button onclick="playAudio('audio/Top/30 In a field.mp3', this)">In a field</button>
+		<button onclick="playAudio('audio/Top/31 Its Fun.mp3', this)">Its Fun</button>
+		<button onclick="playAudio('audio/Top/32 Little boy.mp3', this)">Little boy</button>
+    </div>
+
+    <div id="audio-player" class="audio-player">
+        <audio id="player" controls>
+            <source id="audio-source" src="audio/song1.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <div id="button-container">
+		<button onclick="playAudio('audio/Under/Little boy.mp3', this)">Little boy</button>
+		<button onclick="playAudio('audio/Under/Look in the box.mp3', this)">Look in the box</button>
+		<button onclick="playAudio('audio/Under/Magic mat song.mp3', this)">Magic mat song</button>
+		<button onclick="playAudio('audio/Under/Mice.mp3', this)">Mice</button>
+		<button onclick="playAudio('audio/Under/Month song_January February.mp3', this)">Month song_January February</button>
+		<button onclick="playAudio('audio/Under/Number 1-10.mp3', this)">Number 1-10</button>
+		<button onclick="playAudio('audio/Under/Number 17-20.mp3', this)">Number 17-20</button>
+		<button onclick="playAudio('audio/Under/Number 18-21.mp3', this)">Number 18-21</button>
+        <button onclick="playAudio('audio/Under/Number 19-22.mp3', this)">Number 19-22</button>
+		<button onclick="playAudio('audio/Under/Number 19-22.mp3', this)">Number 19-22</button>		
+		<button onclick="playAudio('audio/Under/Number 20-23.mp3', this)">Number 20-23</button>		
+		<button onclick="playAudio('audio/Under/Number 21-24.mp3', this)">Number 21-24</button>		
+		<button onclick="playAudio('audio/Under/Number 22-25.mp3', this)">Number 22-25</button>		
+		<button onclick="playAudio('audio/Under/Number 101-110.mp3', this)">Number 101-110</button>
+		<button onclick="playAudio('audio/Under/O little hen.mp3', this)">O little hen</button>
+		<button onclick="playAudio('audio/Under/Out in the garden.mp3', this)">Out in the garden</button>
+		<button onclick="playAudio('audio/Under/Picnic Song.mp3', this)">Picnic Song</button>
+		<button onclick="playAudio('audio/Under/Prayer.mp3', this)">Prayer</button>
+		<button onclick="playAudio('audio/Under/Pronunciation song 1.mp3', this)">Pronunciation song 1</button>
+		<button onclick="playAudio('audio/Under/Pronunciation song 2.mp3', this)">Pronunciation song 2</button>
+		<button onclick="playAudio('audio/Under/Punctuation song.mp3', this)">Punctuation song</button>
+		<button onclick="playAudio('audio/Under/Pussy Cat.mp3', this)">Pussy Cat</button>
+		<button onclick="playAudio('audio/Under/Rain song.mp3', this)">Rain song</button>
+    </div>
+
+    <script>
+        function playAudio(src, button) {
+            var player = document.getElementById('player');
+            var audioSource = document.getElementById('audio-source');
+            var buttons = document.querySelectorAll('button');
+
+            audioSource.src = src;
+            player.load();
+            player.play();
+
+            // Reset the color of all buttons
+            buttons.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+
+            // Set the active color to the clicked button
+            button.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

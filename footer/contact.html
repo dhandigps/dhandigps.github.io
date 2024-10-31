@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Contact Form</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+
+a{ color:#2D3E52
+
+} label {
+
+display:block;
+
+margin-top:20px;
+
+}
+
+textarea {
+
+width:50%;
+
+height:150px;
+
+background:#efefef;
+
+border:1px solid #dedede;
+
+padding:10px;
+
+margin-top:3px;
+
+font-size:0.9em;
+
+color:#3a3a3a;
+
+-moz-border-radius:5px;
+
+-webkit-border-radius:5px;
+
+border-radius:5px;
+
+}
+
+input,select{
+
+width:50%;
+
+height:25px;
+
+background:#efefef;
+
+border:1px solid #dedede;
+
+padding:10px;
+
+margin-top:3px;
+
+font-size:0.9em;
+
+color:#3a3a3a;
+
+-moz-border-radius:5px;
+
+-webkit-border-radius:5px;
+
+border-radius:5px;
+
+}
+
+input:focus, textarea:focus {
+
+border:1px solid #97d6eb;
+
+}
+
+#submit {
+
+width:50%;
+
+height:40px;
+
+border:none;
+
+margin-top:20px;
+
+cursor:pointer;color:white;
+
+background:#335599;
+
+}
+
+#submit:hover {
+
+opacity:.9;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+    <center><strong>যোগাযোগ করতে আমাদের ইমেইল করতে পারেন</strong></center>
+
+    <br>
+
+    <br>   
+
+    <br>
+
+<form action="contact.php" method="post">
+
+    <center>
+
+  <label>Your Name:</label>
+
+  <input type="text" id="name" name="name" required>
+
+    <br>
+
+    <br>
+
+  <label>Email Address:</label>
+
+  <input type="email" id="email" name="email" required>
+
+    <br>
+
+    <br>
+
+  <label>Message:</label>
+
+  <textarea id="message" name="message" required></textarea>
+
+    <br>
+
+    <br>
+
+  <input id="submit" name="submit" type="submit" value="Send Message">
+
+  </center>
+
+</form>
+
+</body>
+
+</html>
