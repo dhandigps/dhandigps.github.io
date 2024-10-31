@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>টাকার খেলা</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            background-color: #f0f8ff;
+        }
+        h4 {
+            text-align: center;
+            color: #003366; /* Dark blue color */
+            font-size: 1.25em; /* Smaller size */
+            margin: 10px 0; /* Reduced margin */
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px;
+            gap: 2px; /* Further reduced gap between columns */
+        }
+        .column {
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            min-height: 400px; /* Increased height */
+            background-color: #e0f7fa;
+        }
+        #other-notes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+            background-color: #b2dfdb;
+            width: 30%; /* Adjusted width */
+        }
+        .note {
+            margin: 5px;
+            padding: 5px;
+            text-align: center;
+            cursor: move;
+            transition: background-color 0.3s;
+        }
+        .note img {
+            width: 160px; /* Increased size */
+            display: block;
+        }
+        .note:hover {
+            background-color: #ffcc80;
+        }
+        #drop-area {
+            background-color: #f3e5f5;
+            border: 2px dashed #9c27b0;
+            width: 65%; /* Increased width */
+            min-height: 400px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: center; /* Centered content */
+        }
+        .reset-btn, .start-btn {
+            margin-top: 10px; /* Reduced margin */
+            padding: 10px 20px; /* Adjusted padding */
+            background-color: #ff5722;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px; /* Slightly smaller font size */
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .reset-btn:hover, .start-btn:hover {
+            background-color: #f44336;
+            transform: scale(1.1);
+        }
+        .reset-btn:active, .start-btn:active {
+            background-color: #e64a19;
+        }
+        #summary {
+            font-size: 24px; /* Increased font size */
+            margin-top: 10px;
+            color: #3f51b5;
+            text-align: center; /* Centered text */
+        }
+        #footer {
+            text-align: center;
+            font-size: 14px; /* Smaller font size */
+            margin-top: 20px;
+            color: #666; /* Gray color */
+        }
+        #timer {
+            font-size: 20px;
+            color: #f44336;
+            text-align: center;
+        }
+        #challenge-amount {
+            font-size: 20px;
+            text-align: center;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h4>টাকার খেলা</h4>
+    <div style="text-align:center;">
+        <button class="start-btn" onclick="startGame()">Start</button> <!-- Start Button -->
+        <button class="reset-btn" onclick="resetAll()">Reset</button>
+    </div>
+    <div id="timer" style="display:none;">Time Left: 30 seconds</div> <!-- Timer display -->
+    <div id="challenge-amount" style="display:none;">Challenge Amount: 0 Taka</div> <!-- Challenge amount display -->
+    
+    <div class="container">
+        <div class="column" id="other-notes">
+            <div class="note" draggable="true" ondragstart="drag(event)" id="1000taka">
+                <img src="img/1000taka.jpg" alt="1000 Taka Note">
+            </div>
+            <div class="note" draggable="true" ondragstart="drag(event)" id="500taka">
+                <img src="img/500taka.jpg" alt="500 Taka Note">
+            </div>
+            <div class="note" draggable="true" ondragstart="drag(event)" id="200taka">
+                <img src="img/200taka.jpg" alt="200 Taka Note">
+            </div>
+            <div class="note" draggable="true" ondragstart="drag(event)" id="100taka">
+                <img src="img/100taka.jpg" alt="100 Taka Note">
+            </div>
+            <div class="note" draggable="true" ondragstart="drag(event)" id="50taka">
+                <img src="img/50taka.jpg" alt="50 Taka Note">
+            </div>
+            <div class="note" draggable="true" ondragstart="drag(event)" id="20taka">
+                <img src="img/20taka.jpg" alt="20 Taka Note">
+            </div>
+            <div class="note" draggable="true" ondragstart="drag(event)" id="10taka">
+                <img src="img/10taka.jpg" alt="10 Taka Note">
+            </div>
+            <div class="note" draggable="true" ondragstart="drag(event)" id="5taka">
+                <img src="img/5taka.jpg" alt="5 Taka Note">
+            </div>
+            <div class="note" draggable="true" ondragstart="drag(event)" id="2taka">
+                <img src="img/2taka.jpg" alt="2 Taka Note">
+            </div>
+            <div class="note" draggable="true" ondragstart="drag(event)" id="1taka">
+                <img src="img/1taka.jpg" alt="1 Taka Note">
+            </div>
+        </div>
+        <div class="column" id="drop-area"></div>
+    </div>
+
+    <div id="summary" style="display:none;">Total Notes: 0 | Total Amount: 0 </div>
+    
+    <div id="footer">এর মাধ্যমে শিক্ষার্থীরা টাকার হিসেবের পাশাপাশি গাণিতিক হিসাব-নিকাশ অনুশীলন করতে পারবে। প্রয়োজনে: ismailmokara@gmail.com</div>
+
+    <audio id="success-audio" src="audio/success.mp3" preload="auto"></audio> <!-- Audio feedback for success -->
+    <audio id="fail-audio" src="audio/fail.mp3" preload="auto"></audio> <!-- Audio feedback for failure -->
+    <audio id="drop-fail-audio" src="audio/drop_fail.mp3" preload="auto"></audio> <!-- Audio feedback for dropping card -->
+
+    <script>
+        let totalAmount = 0;
+        let totalNotes = 0;
+        let noteCount = {};
+        let amountMap = {
+            '1000taka': 1000,
+            '500taka': 500,
+            '200taka': 200,
+            '100taka': 100,
+            '50taka': 50,
+            '20taka': 20,
+            '10taka': 10,
+            '5taka': 5,
+            '2taka': 2,
+            '1taka': 1,
+        };
+
+        let challengeAmount = 0; // New variable for challenge amount
+        let timeLeft = 30; // Change time to 30 seconds
+        let timerId;
+
+        function startGame() {
+            totalAmount = 0;
+            totalNotes = 0;
+            noteCount = {};
+            timeLeft = 30; // Reset time to 30 seconds
+            document.getElementById('timer').style.display = 'block'; // Show timer
+            document.getElementById('challenge-amount').style.display = 'block'; // Show challenge amount
+            document.getElementById('summary').style.display = 'block'; // Show summary
+            document.getElementById('drop-area').innerHTML = ''; // Clear drop area
+
+            setChallengeAmount(); // Set new challenge amount
+            startTimer(); // Start the timer
+        }
+
+        function startTimer() {
+            timerId = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer').innerText = "Time Left: " + timeLeft + " seconds";
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerId);
+                    alert
+                    alert("Time's up! Total Amount: " + totalAmount + " Taka");
+                    document.getElementById('fail-audio').play(); // Play fail sound when time is up
+                    resetAll(); // Reset after time is up
+                }
+            }, 1000);
+        }
+
+        function setChallengeAmount() {
+            // Generate a random challenge amount between 100 and 5000
+            challengeAmount = Math.floor(Math.random() * (5000 - 100 + 1)) + 100;
+            document.getElementById('challenge-amount').innerText = "Challenge Amount: " + challengeAmount + " Taka";
+        }
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            var draggedElement = document.getElementById(data);
+            var nodeCopy = draggedElement.cloneNode(true);
+            nodeCopy.removeAttribute('draggable');
+            nodeCopy.style.cursor = 'pointer';
+            nodeCopy.ondblclick = function() { removeNoteFromDropArea(nodeCopy, data); };  // Double click to remove
+            event.target.appendChild(nodeCopy);
+
+            addNoteToSummary(data);
+        }
+
+        function addNoteToSummary(noteId) {
+            if (!noteCount[noteId]) noteCount[noteId] = 0;
+            noteCount[noteId]++;
+            totalAmount += amountMap[noteId];
+            totalNotes++;
+
+            updateSummary();
+        }
+
+        function removeNoteFromDropArea(element, noteId) {
+            element.remove();  // Remove the note from the drop area
+
+            if (noteCount[noteId] > 0) {
+                noteCount[noteId]--;
+                totalAmount -= amountMap[noteId];
+                totalNotes--;
+
+                updateSummary();
+                document.getElementById('drop-fail-audio').play(); // Play drop fail sound
+            }
+        }
+
+function updateSummary() {
+    let breakdown = [];
+
+    for (let noteId in noteCount) {
+        if (noteCount[noteId] > 0) {
+            breakdown.push(`${noteCount[noteId]} x ${amountMap[noteId]}`);
+        }
+    }
+
+    let summaryText = 'Total Notes: ' + totalNotes + ' | Total Amount: ';
+
+    if (breakdown.length > 0) {
+        summaryText += "(" + breakdown.join(' + ') + ") = " + totalAmount + " Taka"; // Adjusted format
+    } else {
+        summaryText += "0 Taka"; // In case there are no notes
+    }
+
+    document.getElementById('summary').innerText = summaryText;
+
+    // Check if total amount matches challenge amount
+    if (totalAmount === challengeAmount) {
+        document.getElementById('success-audio').play(); // Play success sound
+        setTimeout(() => {
+            alert("Congratulations! You've matched the challenge amount of " + challengeAmount + " Taka!");
+            resetAll(); // Reset after showing the alert
+        }, 500); // Slight delay before showing the alert
+    }
+}
+
+
+        function resetAll() {
+            var dropArea = document.getElementById('drop-area');
+            dropArea.innerHTML = ''; // Clear the drop area
+            totalAmount = 0;
+            totalNotes = 0;
+            noteCount = {};
+            timeLeft = 30; // Reset time to 30 seconds
+            clearInterval(timerId); // Clear timer
+
+            document.getElementById('timer').innerText = "Time Left: 30 seconds"; // Reset timer display
+            document.getElementById('summary').innerText = `Total Notes: 0 | Total Amount: 0 `;
+            document.getElementById('challenge-amount').innerText = "Challenge Amount: 0 Taka"; // Reset challenge amount
+        }
+
+        document.getElementById('drop-area').addEventListener('dragover', allowDrop);
+        document.getElementById('drop-area').addEventListener('drop', drop);
+    </script>
+</body>
+</html>

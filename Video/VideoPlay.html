@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+        .video-player {
+            margin: 20px 0;
+            border: 2px solid #4CAF50;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #fff;
+            display: inline-block;
+            width: 80%;
+            max-width: 800px;
+        }
+        video {
+            width: 100%;
+            outline: none;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .active {
+            background-color: #ff9800;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>প্রাথমিক স্তরের জন্যে কিছু নির্বাচিত ভিডিয়ো</h3>
+
+    <div id="button-container">
+        <button onclick="playVideo('Video/PhonicsSong.mp4', this)">Phonics Song</button>
+		<button onclick="playVideo('video/video 1.mp4', this)">Learn Number (1-20)</button>
+        <button onclick="playVideo('video/video 2.mp4', this)">Learn ABC</button>
+        <button onclick="playVideo('video/video 3.mp4', this)">Write ABC</button>
+	    <button onclick="playVideo('Video/abc song nursery rhymes - alphabet songs phonics - abcd for children 1.mp4', this)">abc song</button>
+        <button onclick="playVideo('video/ABCD-Alphabet-Train-song---3D-Animation-Alphabet-ABC-Train-Songs-for-childr 2.mp4', this)">Train-song</button>
+        <button onclick="playVideo('video/ABC-Songs-for-Children--An-Alphabet-Train--Learning-Upper-Case-Letters 4.mp4', this)">Children</button>
+        <button onclick="playVideo('video/Alphabet Song 5.mp4', this)">Alphabet</button>
+        <button onclick="playVideo('video/ALPHABET-TRAIN---123kidstv---Learning-for-kids 6.mp4', this)">ALPHABET-TRAI</button>
+        <button onclick="playVideo('video/Bangla-Counting-1-100-বাংলা-গণনা-১-১০০ 7.mp4', this)">Bangla-Counting</button>
+        <button onclick="playVideo('video/Bangla-Even-number-counting-জোড়-সংখ্যা  8.mp4', this)">Bangla-Even-number</button>
+        <button onclick="playVideo('video/Phonics Song 4 - 3D Animation Nursery rhymes Phonics songs ABC songs for children 9.mp4', this)">Phonics Song </button>
+        <button onclick="playVideo('video/Phonics Song! Alphabet Songs! ABC Song for Kids - Nursery Rhymes 10.mp4', this)">Phonics Song</button>
+        <button onclick="playVideo('Video/আয় বৃষ্টি ঝেঁপে 12.mp4', this)">আয় বৃষ্টি ঝেঁপে </button>
+        <button onclick="playVideo('video/আয়রে আয় টিয়ে 14.mp4', this)">আয়রে আয় টিয়ে</button>
+        <button onclick="playVideo('video/আয়রে আয় টিয়ে- বনশ্রী সেনগুপ্ত 13.mp4', this)">আয়রে আয় টিয়ে- বনশ্রী সেনগুপ্ত </button>
+        <button onclick="playVideo('video/একযে ছিল দুষ্টু ছেলে 15.mp4', this)">একযে ছিল দুষ্টু ছেলে</button>
+        <button onclick="playVideo('video/একযে ছিল মাছি 16.mp4', this)">একযে ছিল মাছি</button>
+        <button onclick="playVideo('video/কাজলা দিদি- যতীন্দ্রমোহন বাগচী  17.mp4', this)">কাজলা দিদি</button>
+        <button onclick="playVideo('video/কাজের লোক-নবকৃষ্ণ ভট্টাচার্য 18.mp4', this)">কাজের লোক</button>
+        <button onclick="playVideo('video/কাঠবিড়ালি কাঠবিড়ালি 19.mp4', this)">কাঠবিড়ালি</button>
+        <button onclick="playVideo('video/কানা বগীর ছাঁ 20.mp4', this)">কানা বগীর ছাঁ 20</button>
+        <button onclick="playVideo('video/কুকুর বাজায় টুমটুমি21.mp4', this)">কুকুর বাজায় টুমটুমি21</button>
+		<button onclick="playVideo('Video/বিয়োগ 22.mp4', this)">বিয়োগ 22</button>
+        <button onclick="playVideo('video/বুলবুল পাখি ময়না টিয়ে 23.mp4', this)">বুলবুল পাখি ময়না টিয়ে 23</button>
+        <button onclick="playVideo('video/ভোর হল দোর খোল 24.mp4', this)">ভোর হল দোর খোল 24</button>
+        <button onclick="playVideo('video/মামার বাড়ি 25.mp4', this)">মামার বাড়ি 25</button>
+        <button onclick="playVideo('video/মামার বাড়ি-জসিমউদ্দীন 26.mp4', this)">মামার বাড়ি-জসিমউদ্দীন 26</button>
+        <button onclick="playVideo('video/মেঘের কোলে রোদ 28.mp4', this)">মেঘের কোলে রোদ 28</button>
+        <button onclick="playVideo('video/মেঘের কোলে রোদ হেসেছে 27.mp4', this)">মেঘের কোলে রোদ হেসেছে 27</button>
+        <button onclick="playVideo('video/শোন ভাই ইসকাপনের দেশে গিয়েছিলাম 29.mp4', this)">শোন ভাই ইসকাপনের দেশে গিয়েছিলাম 29</button>
+        <button onclick="playVideo('video/সংখ্যার ছড়া 30.mp4', this)">সংখ্যার ছড়া 30</button>
+        <button onclick="playVideo('video/video4.mp4', this)">Play Video 4</button>
+        <button onclick="playVideo('video/video5.mp4', this)">Play Video 5</button>
+        <button onclick="playVideo('video/video6.mp4', this)">Play Video 6</button>
+        <button onclick="playVideo('video/video7.mp4', this)">Play Video 7</button>
+        <button onclick="playVideo('video/video8.mp4', this)">Play Video 8</button>
+        <button onclick="playVideo('video/video9.mp4', this)">Play Video 9</button>
+        <button onclick="playVideo('video/video10.mp4', this)">Play Video 10</button>
+    </div>
+
+    <div id="video-player" class="video-player">
+        <video id="player" controls>
+            <source id="video-source" src="video/video1.mp4" type="video/mp4">
+            Your browser does not support the video element.
+        </video>
+    </div>
+
+    <script>
+        function playVideo(src, button) {
+            var player = document.getElementById('player');
+            var videoSource = document.getElementById('video-source');
+            var buttons = document.querySelectorAll('button');
+
+            videoSource.src = src;
+            player.load();
+            player.play();
+
+            // Reset the color of all buttons
+            buttons.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+
+            // Set the active color to the clicked button
+            button.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <style>
+        .container {
+            margin: 0 auto;
+            max-width: 400px;
+            text-align: center;
+            padding: 0px;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 10px; /* Reduced margin */
+            color: #2c3e50;
+        }
+
+        .timer {
+            font-size: 70px;
+            color: #2c3e50;
+            margin-bottom: 10px; /* Reduced margin */
+        }
+
+        .button-wrapper {
+            margin-bottom: 10px; /* Reduced margin */
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 5px; /* Reduced margin */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        button:hover {
+            opacity: 0.7;
+        }
+
+        #start {
+            background-color: #27ae60;
+        }
+
+        #stop {
+            background-color: #c0392b;
+        }
+
+        #reset {
+            background-color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Count Down</h1>
+        <p class="timer" id="timer">00:00</p>
+        <div class="button-wrapper">
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+            <button id="reset">Reset</button>
+        </div>
+    </div>
+    <audio id="alarm-sound" src="PlaySound.wav" preload="auto"></audio>
+    <script>
+        const startEl = document.getElementById("start");
+        const stopEl = document.getElementById("stop");
+        const resetEl = document.getElementById("reset");
+        const timerEl = document.getElementById("timer");
+        const alarmSound = document.getElementById("alarm-sound");
+
+        let interval;
+        let timeLeft;
+        let running = false;
+
+        function updateTimer() {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            let formattedTime = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+            timerEl.innerHTML = formattedTime;
+        }
+
+        function startTimer() {
+            if (running) return;
+
+            let minutes = parseInt(prompt("Enter minutes:"), 10);
+            let seconds = parseInt(prompt("Enter seconds:"), 10);
+
+            if (isNaN(minutes) || isNaN(seconds) || minutes < 0 || seconds < 0 || seconds >= 60) {
+                alert("Invalid input. Please enter valid numbers for minutes and seconds.");
+                return;
+            }
+
+            timeLeft = minutes * 60 + seconds;
+            running = true;
+            updateTimer();
+
+            interval = setInterval(() => {
+                timeLeft--;
+                updateTimer();
+                if (timeLeft <= 0) {
+                    clearInterval(interval);
+                    alarmSound.play();
+                    running = false;
+                }
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(interval);
+            running = false;
+        }
+
+        function resetTimer() {
+            clearInterval(interval);
+            running = false;
+            timeLeft = 0;
+            updateTimer();
+        }
+
+        startEl.addEventListener("click", startTimer);
+        stopEl.addEventListener("click", stopTimer);
+        resetEl.addEventListener("click", resetTimer);
+
+        // Initialize the timer with 00:00
+        resetTimer();
+    </script>
+</body>
+</html>
