@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login Page</title>
+
+    <style>
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    background-color: #f4f4f4;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: top;
+
+    height: 40%;
+
+    margin: 20px;
+
+}
+
+.login-container {
+
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 8px;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    width: 300px;
+
+    text-align: center;
+
+}
+
+.imgcontainer {
+
+  text-align: center;
+
+  margin: 24px 0 12px 0;
+
+}
+
+img.avatar {
+
+  width: 20%;
+
+  border-radius: 50%;
+
+}
+
+.login-container label {
+
+    display: block;
+
+    margin: 10px 0 5px;
+
+}
+
+.login-container input {
+
+    width: 95%;
+
+    padding: 8px;
+
+    margin-bottom: 10px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 4px;
+
+}
+
+.login-container button {
+
+    width: 100%;
+
+    padding: 10px;
+
+    background-color: #4CAF50;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+}
+
+.login-container button:hover {
+
+    background-color: #45a049;
+
+}
+
+#message {
+
+    margin-top: 20px;
+
+    color: red;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="imgcontainer">
+
+<img src="img_avatar.png" alt="Avatar" class="avatar">
+
+</div>
+
+        <form id="loginForm">
+
+            <label for="username">Username:</label>
+
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+
+            <input type="password" id="password" name="password" required>
+
+<label>
+
+<input type="checkbox" name="remember"> Remember me
+
+</label>
+
+            <button type="submit">Login</button>
+
+        </form>
+
+        <div id="message"></div>
+
+    </div>
+
+    <script>
+
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+
+    event.preventDefault();
+
+    const username = document.getElementById('username').value;
+
+    const password = document.getElementById('password').value;
+
+
+    // Hardcoded username and password for demonstration
+
+    const validUsername = 'Admin';
+
+    const validPassword = '1234';
+
+    if (username === validUsername && password === validPassword) {
+
+        // Redirect to home.html upon successful login
+
+        window.location.href = 'index.html';
+
+    } else {
+
+        document.getElementById('message').textContent = 'Login failed. Invalid username or password.';
+
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>
